@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.asynchttpclient</groupId>
+  <groupId>gg.solarmc.asynchttpclient</groupId> <!-- Solar -->
   <artifactId>async-http-client-project</artifactId>
   <version>2.12.4-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -15,12 +15,18 @@
   </description>
   <url>http://github.com/AsyncHttpClient/async-http-client</url>
 
+<!-- Solar start -->
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
+    <license>
+      <name>GNU Lesser General Public License, Version 3</name>
+      <url>https://www.gnu.org/licenses/lgpl-3.0-standalone.html</url>
+    </license>
   </licenses>
+<!-- Solar end -->
 
   <developers>
     <developer>
@@ -38,14 +44,16 @@
   </scm>
 
   <distributionManagement>
+<!-- Solar start -->
     <snapshotRepository>
-      <id>sonatype-nexus-staging</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>solar-repo</id>
+      <url>https://maven.cloudsmith.io/solarmc/oss-lesser-gpl3</url>
     </snapshotRepository>
     <repository>
-      <id>sonatype-nexus-staging</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <id>solar-repo</id>
+      <url>https://maven.cloudsmith.io/solarmc/oss-lesser-gpl3</url>
     </repository>
+<!-- Solar end -->
   </distributionManagement>
 
   <issueManagement>
@@ -100,16 +108,17 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.8.1</version> <!-- Solar -->
         <configuration>
           <source>${source.property}</source>
           <target>${target.property}</target>
+          <release>11</release> <!-- Solar -->
           <maxmem>1024m</maxmem>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
+        <version>3.0.0-M5</version> <!-- Solar -->
         <configuration>
           <redirectTestOutputToFile>${surefire.redirectTestOutputToFile}</redirectTestOutputToFile>
           <systemPropertyVariables>
@@ -181,6 +190,7 @@
           </execution>
         </executions>
       </plugin>
+<!-- Solar - get rid of this
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
@@ -204,6 +214,7 @@
           </execution>
         </executions>
       </plugin>
+Solar end -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -258,11 +269,15 @@
   </profiles>
 
   <modules>
+<!-- Solar start
     <module>bom</module>
+-->
     <module>netty-utils</module>
     <module>client</module>
+<!--
     <module>extras</module>
     <module>example</module>
+Solar end -->
   </modules>
   <dependencyManagement>
     <dependencies>
@@ -364,11 +379,13 @@
       <artifactId>slf4j-api</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+<!-- Solar start -->
     <dependency>
       <groupId>com.sun.activation</groupId>
-      <artifactId>jakarta.activation</artifactId>
-      <version>${activation.version}</version>
+      <artifactId>javax.activation</artifactId>
+      <version>1.2.0</version>
     </dependency>
+<!-- Solar end -->
     <!-- Test dependencies -->
     <dependency>
       <groupId>ch.qos.logback</groupId>

@@ -6,6 +6,7 @@ import org.asynchttpclient.AbstractBasicTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -114,6 +115,7 @@ public class SpnegoEngineTest extends AbstractBasicTest {
   }
 
   @Test
+  @Ignore("Solar - InetAddress#getCanonicalHostName depends on underlying system configuration")
   public void testGetCompleteServicePrincipalName() throws Exception {
     {
       SpnegoEngine spnegoEngine = new SpnegoEngine(null,

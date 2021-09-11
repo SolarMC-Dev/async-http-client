@@ -237,7 +237,7 @@ public class UriTest {
   }
 
   @Test
-  void testFragment() {
+  public void testFragment() { // Solar - public
     String url = "http://user@hello.com:8080/level1/level2/level3?q=1";
     String fragment = "foo";
     String urlWithFragment = url + "#" + fragment;
@@ -248,7 +248,7 @@ public class UriTest {
   }
 
   @Test
-  void testRelativeFragment() {
+  public void testRelativeFragment() { // Solar - public
     Uri uri = Uri.create(Uri.create("http://user@hello.com:8080"), "/level1/level2/level3?q=1#foo");
     assertEquals("foo", uri.getFragment(), "fragment should be kept when computing a relative url");
   }
